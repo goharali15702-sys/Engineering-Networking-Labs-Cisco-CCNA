@@ -1,82 +1,92 @@
-# 🌐 Engineering Networking Labs (CCNA Level)
+# 🌐 Engineering Networking Labs (CCNA)
 
-This repository contains a collection of **CCNA-level networking labs** designed and simulated using **Cisco Packet Tracer**.
-These labs are organized in a structured and practical way to help understand real-world networking concepts.
-
----
-
- 📌 Objectives
-
-* Build strong fundamentals of networking
-* Practice Cisco configurations
-* Understand real-world network design
-* Prepare for CCNA certification
+A collection of hands-on Cisco CCNA networking labs built using **Cisco Packet Tracer**. This repository documents my journey from networking fundamentals to enterprise-level networking by designing, configuring, verifying, and troubleshooting real-world network scenarios.
 
 ---
 
- 🛠 Tools Used
+# 🎯 Objectives
 
-* Cisco Packet Tracer
-* Basic Networking Devices (Routers, Switches, PCs)
-
----
-
- 📂 Labs Included
-
-| Lab No | Topic                      |
-| ------ | -------------------------- |
-| 01     | Basic Network Setup        |
-| 02     | Static Routing             |
-| 03     | VLAN Configuration         |
-| 04     | Inter-VLAN Routing         |
-| 05     | DHCP Configuration         |
-| 06     | Access Control Lists (ACL) |
-| 07     | NAT Configuration          |
-| 08     | OSPF Routing               |
-| 09     | SOHO Network Design        |
+- Build a strong foundation in Cisco networking.
+- Practice CCNA concepts through hands-on labs.
+- Learn real-world network design and implementation.
+- Document configurations and verification steps.
+- Build a professional networking portfolio on GitHub.
+- Prepare for the Cisco CCNA (200-301) certification.
 
 ---
 
- 🚀 Features
+# 🛠 Tools Used
 
-* Step-by-step configurations
-* Realistic topologies
-* Beginner to intermediate level
-* Well-organized structure
-
----
-
- 🎯 Who This Is For
-
-* CCNA Students
-* Networking Beginners
-* IT & Computer Science Students
+- Cisco Packet Tracer
+- Cisco IOS CLI
+- Git
+- GitHub
 
 ---
 
- 📬 Author
+# ✅ Completed Labs
+
+| No. | Lab | Status |
+|-----|----------------------------|--------|
+| 01 | Basic Network | ✅ Completed |
+| 02 | Router-on-a-Stick | ✅ Completed |
+| 03 | Device Configuration | ✅ Completed |
+| 04 | Static Routing | ✅ Completed |
+
+---
+
+# 📂 Repository Structure
+
+```text
+Engineering-Networking-Labs/
+│
+├── README.md
+├── 01-Basic-Network/
+├── 02-Router-on-a-Stick/
+├── 03-Device-Configuration/
+└── 04-Static-Routing/
+```
+
+---
+
+# 🚀 Upcoming Labs
+
+- VLSM
+- VLAN Design
+- Trunking
+- Inter-VLAN Routing
+- DHCP
+- Standard ACL
+- Extended ACL
+- NAT
+- OSPF
+- EtherChannel
+- Spanning Tree Protocol (STP)
+- SSH
+- Enterprise Network Projects
+
+---
+
+# 📖 How to Use
+
+1. Open the desired lab folder.
+2. Read the `README.md` to understand the lab objectives and topology.
+3. Open the `.pkt` file using Cisco Packet Tracer.
+4. Follow the configuration steps.
+5. Verify the network using the provided verification commands.
+
+---
+
+# 👨‍💻 Author
 
 **Gohar Ali**
+
 Computer Systems Engineering Student
-MUST University (Graduation: 2027)
+
+Cisco CCNA Learner
+
+Building practical networking skills through hands-on Cisco labs.
 
 ---
 
- ⭐ Note
-
-Each lab folder contains:
-
-* `.pkt` file (Packet Tracer topology)
-* `README.md` (Explanation + configuration)
-
----
-
- 🔥 Future Improvements
-
-* Add more advanced labs (EIGRP, BGP)
-* Network security labs
-* Cloud networking integration
-
----
-
-👉 Feel free to explore, fork, and improve this repository!
+⭐ This repository is continuously updated as I progress through my CCNA learning journey.
