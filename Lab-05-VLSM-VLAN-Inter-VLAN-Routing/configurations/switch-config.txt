@@ -1,0 +1,49 @@
+Switch Configuration — Lab 05
+VLSM + VLANs + Router-on-a-Stick
+
+enable
+configure terminal
+
+vlan 10
+name HR
+exit
+
+vlan 20
+name IT
+exit
+
+vlan 30
+name SALES
+exit
+
+vlan 40
+name MANAGEMENT
+exit
+
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+exit
+
+interface fastEthernet 0/3
+switchport mode access
+switchport access vlan 30
+exit
+
+interface fastEthernet 0/4
+switchport mode access
+switchport access vlan 40
+exit
+
+interface fastEthernet 0/4
+switchport mode trunk
+exit
+
+end
+
+copy running-config startup-config

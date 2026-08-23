@@ -1,0 +1,79 @@
+Lab 05 Verification
+VLSM + VLANs + Inter-VLAN Routing
+
+1. Switch VLAN Verification
+
+Command:
+
+show vlan brief
+
+Expected VLANs:
+
+VLAN 10 — HR
+VLAN 20 — IT
+VLAN 30 — SALES
+VLAN 40 — MANAGEMENT
+
+2. Trunk Verification
+
+Command:
+
+show interfaces trunk
+
+Trunk Port:
+
+Fa0/5
+
+Fa0/5 successfully operates as the trunk between the switch and router.
+
+3. Router Interface Verification
+
+Command:
+
+show ip interface brief
+
+Router subinterfaces:
+
+G0/0.10 — 192.168.100.1
+G0/0.20 — 192.168.100.65
+G0/0.30 — 192.168.100.97
+G0/0.40 — 192.168.100.113
+
+All required subinterfaces are operational.
+
+4. Routing Table Verification
+
+Command:
+
+show ip route
+
+Connected networks:
+
+192.168.100.0/26
+192.168.100.64/27
+192.168.100.96/28
+192.168.100.112/30
+
+5. Inter-VLAN Connectivity
+
+From the HR PC:
+
+ping 192.168.100.66
+ping 192.168.100.98
+ping 192.168.100.114
+
+Result:
+
+Successful communication between devices in different VLANs.
+
+6. Final Result
+
+VLSM addressing was successfully implemented.
+
+Four VLANs were configured.
+
+The switch-to-router link was configured as a trunk on Fa0/5.
+
+Router-on-a-Stick was successfully configured.
+
+Inter-VLAN routing and end-to-end connectivity were verified successfully.

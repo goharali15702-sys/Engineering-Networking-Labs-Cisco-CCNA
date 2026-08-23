@@ -1,0 +1,33 @@
+Router Configuration — Lab 05
+VLSM + VLANs + Router-on-a-Stick
+
+enable
+configure terminal
+
+interface gigabitEthernet 0/0
+no shutdown
+exit
+
+interface gigabitEthernet 0/0.10
+encapsulation dot1Q 10
+ip address 192.168.100.1 255.255.255.192
+exit
+
+interface gigabitEthernet 0/0.20
+encapsulation dot1Q 20
+ip address 192.168.100.65 255.255.255.224
+exit
+
+interface gigabitEthernet 0/0.30
+encapsulation dot1Q 30
+ip address 192.168.100.97 255.255.255.240
+exit
+
+interface gigabitEthernet 0/0.40
+encapsulation dot1Q 40
+ip address 192.168.100.113 255.255.255.252
+exit
+
+end
+
+copy running-config startup-config
