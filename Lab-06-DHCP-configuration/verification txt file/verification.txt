@@ -1,0 +1,58 @@
+Lab 06 Verification
+DHCP Configuration
+
+1. Interface Verification
+
+Command:
+
+show ip interface brief
+
+Result:
+
+G0/0 — 192.168.10.1
+Status — Up
+Protocol — Up
+
+2. DHCP Pool Verification
+
+Command:
+
+show ip dhcp pool
+
+Result:
+
+DHCP pool LAN was successfully created for:
+
+192.168.10.0/24
+
+Default Gateway:
+
+192.168.10.1
+
+3. DHCP Binding Verification
+
+Command:
+
+show ip dhcp binding
+
+Result:
+
+The router successfully assigned IP addresses to the PCs.
+
+4. PC Verification
+
+PC1 — DHCP enabled
+PC2 — DHCP enabled
+PC3 — DHCP enabled
+
+All PCs successfully received IP addressing information automatically.
+
+5. Connectivity Verification
+
+Ping tests between network devices were successful.
+
+6. Final Result
+
+The router successfully operated as a DHCP server.
+
+The PCs received their IP addresses dynamically and network connectivity was successfully verified.
