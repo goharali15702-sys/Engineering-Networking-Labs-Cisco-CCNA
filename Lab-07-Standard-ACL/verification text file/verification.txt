@@ -1,0 +1,53 @@
+Lab 07 Verification
+Standard ACL
+
+1. ACL Verification
+
+Command:
+
+show access-lists
+
+Result:
+
+Standard ACL 10 was successfully configured.
+
+ACL rules:
+
+deny host 192.168.10.10
+permit any
+
+2. Interface ACL Verification
+
+Command:
+
+show ip interface gigabitEthernet 0/1
+
+Result:
+
+ACL 10 was successfully applied in the outbound direction on G0/1.
+
+3. Configuration Verification
+
+Command:
+
+show running-config | include access-list
+
+Result:
+
+The Standard ACL configuration was present in the running configuration.
+
+4. Connectivity Before ACL
+
+HR PC → Server: Successful
+IT PC → Server: Successful
+
+5. Connectivity After ACL
+
+HR PC → Server: Blocked
+IT PC → Server: Successful
+
+6. Final Result
+
+The Standard ACL successfully denied traffic from the HR PC while permitting traffic from the IT PC.
+
+The ACL was verified using Cisco IOS verification commands and connectivity tests.
