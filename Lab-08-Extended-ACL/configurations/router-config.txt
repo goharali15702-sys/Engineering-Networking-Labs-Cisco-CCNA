@@ -1,0 +1,27 @@
+
+`configurations/router-config.txt`
+
+```text
+Router Configuration — Lab 08
+Extended ACL
+
+enable
+configure terminal
+
+interface gigabitEthernet 0/0
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+exit
+
+interface gigabitEthernet 0/1
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+exit
+
+access-list 100 deny tcp host 192.168.10.20 host 192.168.20.10 eq 80
+access-list 100 permit icmp any any
+access-list 100 permit ip any any
+
+interface gigabitEthernet 0/1
+ ip access-group 100 in
+exit
