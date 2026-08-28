@@ -1,0 +1,55 @@
+
+
+Lab 09 — Static NAT
+Router Configuration
+
+========================================
+R1 — NAT Router
+========================================
+
+enable
+configure terminal
+
+interface gigabitEthernet 0/0
+ ip address 192.168.10.1 255.255.255.0
+ ip nat inside
+ no shutdown
+exit
+
+interface gigabitEthernet 0/1
+ ip address 203.0.113.1 255.255.255.252
+ ip nat outside
+ no shutdown
+exit
+
+ip route 192.168.20.0 255.255.255.0 203.0.113.2
+
+ip nat inside source static 192.168.10.10 203.0.113.10
+
+end
+
+copy running-config startup-config
+
+
+========================================
+R2 — ISP Router
+========================================
+
+enable
+configure terminal
+
+interface gigabitEthernet 0/0
+ ip address 203.0.113.2 255.255.255.252
+ no shutdown
+exit
+
+interface gigabitEthernet 0/1
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+exit
+
+ip route 192.168.10.0 255.255.255.0 203.0.113.1
+
+end
+
+copy running-config startup-config

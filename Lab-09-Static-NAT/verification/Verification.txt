@@ -1,0 +1,115 @@
+Lab 09 — Static NAT
+Verification
+
+========================================
+1. Verify NAT Translation
+========================================
+
+Command
+
+show ip nat translations
+
+Expected Result
+
+Inside Global 203.0.113.10
+Inside Local  192.168.10.10
+
+The Static NAT mapping is present.
+
+
+========================================
+2. Verify NAT Statistics
+========================================
+
+Command
+
+show ip nat statistics
+
+Result
+
+NAT configuration and translation information
+was successfully verified.
+
+
+========================================
+3. Verify NAT Configuration
+========================================
+
+Command
+
+show running-config  include ip nat
+
+Expected Configuration
+
+ip nat inside
+ip nat outside
+ip nat inside source static 192.168.10.10 203.0.113.10
+
+
+========================================
+4. Verify NAT Inside Interface
+========================================
+
+Command
+
+show ip interface gigabitEthernet 00
+
+Result
+
+G00 is configured as the NAT inside interface.
+
+
+========================================
+5. Verify NAT Outside Interface
+========================================
+
+Command
+
+show ip interface gigabitEthernet 01
+
+Result
+
+G01 is configured as the NAT outside interface.
+
+
+========================================
+6. External Connectivity Test
+========================================
+
+From External PC
+
+ping 203.0.113.10
+
+Result
+
+Successful.
+
+The External PC successfully reached the
+internal server using the public NAT address.
+
+
+========================================
+7. Static NAT Mapping
+========================================
+
+Inside Local
+
+192.168.10.10
+
+Inside Global
+
+203.0.113.10
+
+Mapping
+
+192.168.10.10 → 203.0.113.10
+
+
+========================================
+8. Final Result
+========================================
+
+Static NAT was successfully configured and verified.
+
+The internal server was reachable from the
+external network through its publicglobal NAT address.S
