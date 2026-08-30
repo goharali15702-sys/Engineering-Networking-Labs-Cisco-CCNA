@@ -1,0 +1,172 @@
+LAB 10 - DYNAMIC NAT VERIFICATION
+=================================
+
+1. Verify R0 interfaces
+
+Command:
+
+show ip interface brief
+
+Expected:
+
+GigabitEthernet0/0
+IP: 192.168.10.1
+Status: up/up
+
+GigabitEthernet0/1
+IP: 172.165.20.1
+Status: up/up
+
+
+2. Verify R1 interfaces
+
+Command:
+
+show ip interface brief
+
+Expected:
+
+GigabitEthernet0/0
+IP: 172.165.20.2
+Status: up/up
+
+GigabitEthernet0/1
+IP: 192.168.20.1
+Status: up/up
+
+
+3. Verify R0 routing table
+
+Command:
+
+show ip route
+
+Expected:
+
+192.168.20.0/24 via 172.165.20.2
+
+The inside LAN should also appear as directly connected.
+
+
+4. Verify R1 routing table
+
+Command:
+
+show ip route
+
+Expected:
+
+192.168.10.0/24 via 172.165.20.1
+203.0.113.0/24 via 172.165.20.1
+
+
+5. Verify NAT ACL
+
+Command:
+
+show access-lists
+
+Expected:
+
+Standard IP access list 1
+    permit 192.168.10.0 0.0.0.255
+
+
+6. Verify NAT configuration
+
+Command:
+
+show running-config | include ip nat
+
+Expected:
+
+ip nat pool NATPOOL 203.0.113.10 203.0.113.12 netmask 255.255.255.0
+ip nat inside source list 1 pool NATPOOL
+
+
+7. Test PC1 connectivity
+
+From PC1:
+
+ping 192.168.20.10
+
+Expected:
+
+Successful replies from the server.
+
+
+8. Test PC2 connectivity
+
+From PC2:
+
+ping 192.168.20.10
+
+Expected:
+
+Successful replies from the server.
+
+
+9. Test PC3 connectivity
+
+From PC3:
+
+ping 192.168.20.10
+
+Expected:
+
+Successful replies from the server.
+
+
+10. Verify Dynamic NAT translations
+
+On R0:
+
+show ip nat translations
+
+Expected behavior:
+
+Inside Local addresses from 192.168.10.0/24 should be translated
+to available addresses from the NAT pool.
+
+Example:
+
+192.168.10.10 -> 203.0.113.10
+192.168.10.20 -> 203.0.113.11
+192.168.10.30 -> 203.0.113.12
+
+The exact address assignment may vary.
+
+
+11. Verify NAT statistics
+
+On R0:
+
+show ip nat statistics
+
+Confirm:
+
+- Inside interface: GigabitEthernet0/0
+- Outside interface: GigabitEthernet0/1
+- NAT pool: NATPOOL
+- Dynamic translations are present after traffic is generated.
+
+
+12. Save configurations
+
+R0:
+
+copy running-config startup-config
+
+R1:
+
+copy running-config startup-config
+
+
+FINAL RESULT
+============
+
+Dynamic NAT with a NAT Pool was successfully configured and verified.
+
+PC1, PC2, and PC3 can communicate with the server through the NAT router.
+
+LAB 10: COMPLETED

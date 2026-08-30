@@ -1,0 +1,60 @@
+LAB 10 - DYNAMIC NAT WITH NAT POOL
+==================================
+
+R0 - NAT ROUTER
+---------------
+
+enable
+configure terminal
+
+interface GigabitEthernet0/0
+ ip address 192.168.10.1 255.255.255.0
+ ip nat inside
+ no shutdown
+ exit
+
+interface GigabitEthernet0/1
+ ip address 172.165.20.1 255.255.0.0
+ ip nat outside
+ no shutdown
+ exit
+
+ip nat pool NAT-POOL 203.0.113.10 203.0.113.12 netmask 255.255.255.0
+
+access-list 2 permit 192.168.10.0 0.0.0.255
+
+ip nat inside source list 2 pool NATPOOL
+
+ip route 192.168.20.0 255.255.255.0 172.165.20.2
+
+end
+
+copy running-config startup-config
+
+
+R1 - ROUTER
+-----------
+
+enable
+configure terminal
+
+interface GigabitEthernet0/0
+ ip address 172.165.20.2 255.255.0.0
+ no shutdown
+ exit
+
+interface GigabitEthernet0/1
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+ exit
+
+
+ip route 192.168.10.0 255.255.255.0 172.165.20.1
+ip route 203.0.113.0 255.255.255.0 172.165.20.1
+
+end
+
+copy running-config startup-config
+
+
+END OF CONFIGURATION
