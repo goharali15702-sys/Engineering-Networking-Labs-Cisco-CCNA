@@ -1,0 +1,11 @@
+Lab 11 Notes
+
+- This lab is based on the Lab 10 Dynamic NAT topology.
+- Dynamic NAT pool configuration was removed.
+- ACL 2 was retained and reused for PAT.
+- PAT uses Router0 GigabitEthernet0/1 as the inside-global address.
+- Public/global PAT address: 172.165.20.1
+- Inside network: 192.168.10.0/24
+- Server network: 192.168.20.0/24
+
+

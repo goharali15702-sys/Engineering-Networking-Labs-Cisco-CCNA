@@ -1,0 +1,93 @@
+Lab 11 – PAT (NAT Overload)
+Verification
+
+==================================================
+1. Verify NAT configuration
+==================================================
+
+Router0# show running-config | section ip nat
+
+Expected:
+
+ip nat inside source list 2 interface GigabitEthernet0/1 overload
+
+The interfaces should also contain:
+
+ip nat inside
+ip nat outside
+
+==================================================
+2. Verify routing
+==================================================
+
+Router0# show ip route
+
+Expected route:
+
+S    192.168.20.0/24 via 172.165.20.2
+
+Router1# show ip route
+
+Expected route:
+
+S    192.168.10.0/24 via 172.165.20.1
+
+==================================================
+3. Test connectivity
+==================================================
+
+From PC1:
+
+ping 192.168.20.10
+
+From PC2:
+
+ping 192.168.20.10
+
+From PC3:
+
+ping 192.168.20.10
+
+All three PCs should receive replies.
+
+==================================================
+4. Verify PAT translations
+==================================================
+
+Router0# show ip nat translations
+
+After generating traffic, translations should show the inside
+local addresses (192.168.10.10, .20, and .30) using the same
+inside global address:
+
+172.165.20.1
+
+Different ports/identifiers allow multiple connections to share
+the same global address.
+
+==================================================
+5. Verify NAT statistics
+==================================================
+
+Router0# show ip nat statistics
+
+This should show the configured PAT rule and active translation
+information after traffic has been generated.
+
+==================================================
+6. Clear old translations if necessary
+==================================================
+
+Router0# clear ip nat translation *
+
+==================================================
+Verification Result
+==================================================
+
+PAT is successful when:
+[ ] PC1 can ping 192.168.20.10
+[ ] PC2 can ping 192.168.20.10
+[ ] PC3 can ping 192.168.20.10
+[ ] PAT rule appears in the running configuration
+[ ] NAT translations are created after traffic
+[ ] Multiple inside hosts use 172.165.20.1
